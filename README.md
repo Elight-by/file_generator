@@ -1,5 +1,5 @@
 # file_generator
-Generate files of precise size!
+Generate files of precise size
 
 # Usage (with git):
 1. git clone https://github.com/Elight-by/file_generator
