@@ -23,40 +23,24 @@ def save_settings(new_data):
         json.dump(new_data, f, indent=4, ensure_ascii=False)
 
 settings_loaded = load_settings()
-if settings_loaded["settings"]["lang"] == "en":
-    byte = "bytes"
-    kilo_byte = "kilobytes"
-    mega_byte = "megabytes"
-    giga_byte = "gigabytes"
-    settings_first = "Select setting:\n1. Unit of measurement of information (Bytes, kilobytes, etc.)\n2. File name and other\n3. Language "
-    settings_uomoi = "Select unit of measurement:\n1. Bytes\n2. Kilobytes (1024 bytes)\n3. Megabytes (1024 kilobytes)\n4. Gigabytes (1024 megabytes) "
-    settings_uomoi_incorrect = "Incorrectly entered value! 1/2/3/4"
-    settings_file_name = "Enter the file name with the type after the dot, for example: generated.data "
-    settings_lang = "Select language:\n1. English\n2. Russian "
-    generate = "Enter the file size in "
-    succesfylly_generate = "File generated successfully"
-    start_code = "1. Generate file\n2. Settings "
-elif settings_loaded["settings"]["lang"] == "ru":
-    byte = "байты"
-    kilo_byte = "килобайты"
-    mega_byte = "мегабайты"
-    giga_byte = "гигабайты"
-    settings_first = "Выберите настройку:\n1. Единица измерения информации (Байты, килобайты и т.д.) текущая:\n2. Название файла и другое\n3. Язык "
-    settings_uomoi = "Выберите единицу измерения:\n1. Байты\n2. Килобайты (1024 байта)\n3. Мегабайты (1024 килобайта)\n4. Гигабайты (1024 мегабайта) "
-    settings_uomoi_incorrect = "Неправильно введенное значение! 1/2/3/4"
-    settings_file_name = "Введите название файла с типом после точки например: generated.data "
-    settings_lang = "Выберите язык:\n1. Английский\n2. Русский "
-    generate = "Введите размер файла в "
-    succesfylly_generate = "Файл успешно сгенерирован"
-    start_code = "1. Сгенерировать файл\n2. Настройки "
-else:
-    None
+
+byte = "bytes"
+kilo_byte = "kilobytes"
+mega_byte = "megabytes"
+giga_byte = "gigabytes"
+settings_first = "Select setting:\n1. Unit of measurement of information (Bytes, kilobytes, etc.)\n2. File name and other "
+settings_uomoi = "Select unit of measurement:\n1. Bytes\n2. Kilobytes (1024 bytes)\n3. Megabytes (1024 kilobytes)\n4. Gigabytes (1024 megabytes) "
+settings_uomoi_incorrect = "Incorrectly entered value! 1/2/3/4"
+settings_file_name = "Enter the file name with the type after the dot, for example: generated.data "
+generate = "Enter the file size in "
+succesfylly_generate = "File generated successfully"
+start_code = "1. Generate file\n2. Settings "
 
 
 def settings():
     settings_loaded = load_settings()
     print(settings_first)
-    setting_get = input("1/2/3 ")
+    setting_get = input("1/2 ")
     if setting_get == "1":
         print(settings_uomoi)
         uomoi = int(input("1/2/3/4 "))
@@ -70,14 +54,6 @@ def settings():
         file_name = input()
         settings_loaded["settings"]["file_name"] = file_name
         save_settings(settings_loaded)
-    elif setting_get == "3":
-        lang = input(settings_lang)
-        if lang == "1":
-            settings_loaded["settings"]["lang"] = "en"
-            save_settings(settings_loaded)
-        elif lang == "2":
-            settings_loaded["settings"]["lang"] = "ru"
-            save_settings(settings_loaded)
 
 
 def main():
@@ -112,26 +88,6 @@ def main():
                 print(f"{percent}%")
         print(succesfylly_generate)
 
-
-def first_start():
-    settings_loaded = load_settings()
-    print("Thanks for downloading!")
-    lang = input("Select language: \n1. English\n2. Russian\n")
-    try:
-        if lang == "1":
-            settings_loaded["settings"]["lang"] = "en"
-            save_settings(settings_loaded)
-            start()
-        elif lang == "2":
-            settings_loaded["settings"]["lang"] = "ru"
-            save_settings(settings_loaded)
-            start()
-    except:
-        print("✅")
-    else:
-        print("Incorrect input")
-        first_start()
-
 def start():
     start_choice = input(start_code)
     if start_choice == "1":
@@ -139,38 +95,6 @@ def start():
     elif start_choice == "2":
         settings()
 
-settings_loaded = load_settings()
-if settings_loaded["settings"]["lang"] == "none":
-    first_start()
-
 while True:
     settings_loaded = load_settings()
-    if settings_loaded["settings"]["lang"] == "en":
-        byte = "bytes"
-        kilo_byte = "kilobytes"
-        mega_byte = "megabytes"
-        giga_byte = "gigabytes"
-        settings_first = "Select setting:\n1. Unit of measurement of information (Bytes, kilobytes, etc.)\n2. File name and other\n3. Language "
-        settings_uomoi = "Select unit of measurement:\n1. Bytes\n2. Kilobytes (1024 bytes)\n3. Megabytes (1024 kilobytes)\n4. Gigabytes (1024 megabytes) "
-        settings_uomoi_incorrect = "Incorrectly entered value! 1/2/3/4"
-        settings_file_name = "Enter the file name with the type after the dot, for example: generated.data "
-        settings_lang = "Select language:\n1. English\n2. Russian "
-        generate = "Enter the file size in "
-        succesfylly_generate = "File generated successfully"
-        start_code = "1. Generate file\n2. Settings "
-    elif settings_loaded["settings"]["lang"] == "ru":
-        byte = "байты"
-        kilo_byte = "килобайты"
-        mega_byte = "мегабайты"
-        giga_byte = "гигабайты"
-        settings_first = "Выберите настройку:\n1. Единица измерения информации (Байты, килобайты и т.д.) текущая:\n2. Название файла и другое\n3. Язык "
-        settings_uomoi = "Выберите единицу измерения:\n1. Байты\n2. Килобайты (1024 байта)\n3. Мегабайты (1024 килобайта)\n4. Гигабайты (1024 мегабайта) "
-        settings_uomoi_incorrect = "Неправильно введенное значение! 1/2/3/4"
-        settings_file_name = "Введите название файла с типом после точки например: generated.data "
-        settings_lang = "Выберите язык:\n1. Английский\n2. Русский "
-        generate = "Введите размер файла в "
-        succesfylly_generate = "Файл успешно сгенерирован"
-        start_code = "1. Сгенерировать файл\n2. Настройки "
-    else:
-        None
     start()
