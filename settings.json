@@ -1,7 +1,6 @@
 {
     "settings": {
         "uomoi": 1,
-        "file_name": "generate.data",
-        "lang": "none"
+        "file_name": "generated.data"
     }
 }
